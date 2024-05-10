@@ -11,13 +11,11 @@
         label="Blob text"
         name="blob"
         size="md"
-        hint="100-280 chars"
+        :hint="`${constraints.blob.min}-${constraints.blob.max} chars`"
         required
       >
         <UTextarea
-          :disabled="loading"
           v-model.trim="state.blob"
-          class="w-full"
           :rows="3"
           :maxrows="6"
           autoresize
@@ -51,21 +49,21 @@ const state = ref({
   blob: undefined,
 });
 
+const constraints: { [key: string]: { min: number; max: number } } = {
+  blob: { min: 140, max: 280 },
+};
+
 const validate = (formState: any): FormError[] => {
   const errors = [];
+  const error = validateField(
+    'blob',
+    formState.blob,
+    constraints.blob.min,
+    constraints.blob.max
+  );
 
-  if (!formState.blob) {
-    errors.push({ path: 'blob', message: 'Blob is required.' });
-  } else if (formState.blob.length < 100) {
-    errors.push({
-      path: 'blob',
-      message: 'Blob can not be less than 100 characters.',
-    });
-  } else if (formState.blob.length > 280) {
-    errors.push({
-      path: 'blob',
-      message: 'Blob can not be more than 280 characters.',
-    });
+  if (error) {
+    errors.push(error);
   }
 
   return errors;
@@ -84,5 +82,7 @@ const addBlob = async (event: FormSubmitEvent<any>) => {
   } catch (error) {
     console.log('failed with error', error);
   }
+
+  loading.value = false;
 };
 </script>
