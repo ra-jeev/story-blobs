@@ -12,9 +12,12 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/ui": "^2.13.0",
+    "@types/bcryptjs": "^2.4.6",
     "nuxt": "^3.10.1"
   },
   "dependencies": {
-    "@netlify/blobs": "^7.3.0"
+    "@netlify/blobs": "^7.3.0",
+    "bcryptjs": "^2.4.3",
+    "nuxt-auth-utils": "^0.0.24"
   }
 }
