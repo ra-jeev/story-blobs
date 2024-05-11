@@ -8,12 +8,14 @@
 
 <script setup lang="ts">
 const { user } = useUserSession();
-
+const { query } = useRoute();
 watch(
   user,
   () => {
     if (user.value) {
-      return navigateTo('/', { replace: true });
+      return navigateTo(query.redirect ? (query.redirect as string) : '/', {
+        replace: true,
+      });
     }
   },
   { immediate: true }
