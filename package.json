@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@netlify/blobs": "^7.3.0",
+    "@paralleldrive/cuid2": "^2.2.2",
     "bcryptjs": "^2.4.3",
     "nuxt-auth-utils": "^0.0.24"
   }
