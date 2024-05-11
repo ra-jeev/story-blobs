@@ -1,6 +1,5 @@
 import bcrypt from 'bcryptjs';
 import { getUserByEmail } from '~/server/blobs';
-import type { User } from '~/types';
 
 export default defineEventHandler(async (event) => {
   const { email, password } = await readBody(event);
