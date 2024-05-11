@@ -56,7 +56,6 @@
     <UButton
       block
       class="!mt-6"
-      :ui="{ rounded: 'rounded-full' }"
       :loading="loading"
       :disabled="loading"
       trailing-icon="i-heroicons-arrow-right-20-solid"
@@ -110,9 +109,6 @@ const onLogin = async (event: FormSubmitEvent<any>) => {
 
     await refreshSession();
   } catch (error: any) {
-    console.log('got login error', error);
-    console.log('error  message', error.message);
-    console.log('error status message', error.statusMessage);
     loading.value = false;
     formError.value =
       error.statusMessage ?? 'Failed to login. Please try again later.';

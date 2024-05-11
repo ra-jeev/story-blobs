@@ -9,12 +9,8 @@
       <AppLogo />
       <div class="flex items-center gap-4">
         <ColorMode />
-        <UButton v-if="!loggedIn" :ui="{ rounded: 'rounded-full' }" to="/login">
-          Login
-        </UButton>
-        <UButton v-else :ui="{ rounded: 'rounded-full' }" @click="clear">
-          Logout
-        </UButton>
+        <UButton v-if="!loggedIn" to="/login"> Login </UButton>
+        <UButton v-else @click="clear"> Logout </UButton>
       </div>
     </UContainer>
   </header>

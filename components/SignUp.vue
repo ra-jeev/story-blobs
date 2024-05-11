@@ -64,7 +64,6 @@
     <UButton
       block
       class="!mt-6"
-      :ui="{ rounded: 'rounded-full' }"
       :loading="loading"
       :disabled="loading"
       type="submit"

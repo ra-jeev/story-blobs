@@ -6,7 +6,7 @@
       :state="state"
       @submit="createStory"
     >
-      <div class="text-lg md:text-xl">Story Details</div>
+      <div class="text-lg md:text-xl">Your story details</div>
       <UFormGroup
         label="Title"
         name="title"
@@ -37,7 +37,7 @@
         />
       </UFormGroup>
       <UFormGroup
-        label="Blob text"
+        label="Starting Blob"
         name="blob"
         size="md"
         :hint="`${constraints.blob.min}-${constraints.blob.max} chars`"
@@ -58,7 +58,7 @@
         size="md"
         type="submit"
       >
-        Create Story
+        Publish story
       </UButton>
     </UForm>
   </UCard>
@@ -76,7 +76,7 @@ const state = ref({
 const constraints: { [key: string]: { min: number; max: number } } = {
   title: { min: 3, max: 80 },
   premise: { min: 140, max: 280 },
-  blob: { min: 140, max: 280 },
+  blob: { min: 140, max: 420 },
 };
 
 const validate = (formState: any): FormError[] => {
@@ -110,6 +110,8 @@ const createStory = async (event: FormSubmitEvent<any>) => {
         blob: event.data.blob,
       },
     });
+
+    navigateTo(`/stories/${res.slug}`);
   } catch (error) {
     console.log('failed with error', error);
   }

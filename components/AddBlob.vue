@@ -50,7 +50,7 @@ const state = ref({
 });
 
 const constraints: { [key: string]: { min: number; max: number } } = {
-  blob: { min: 140, max: 280 },
+  blob: { min: 140, max: 420 },
 };
 
 const validate = (formState: any): FormError[] => {
