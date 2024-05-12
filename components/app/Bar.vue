@@ -7,7 +7,7 @@
       :class="`h-[var(--header-height)]`"
     >
       <AppLogo />
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-x-4">
         <ColorMode />
         <UButton
           to="https://github.com/ra-jeev/story-blobs"
@@ -17,8 +17,18 @@
           target="_blank"
           variant="ghost"
         />
-        <UButton v-if="!loggedIn" to="/login"> Login </UButton>
-        <UButton v-else @click="clear"> Logout </UButton>
+        <UButton
+          icon="i-heroicons-bars-3-bottom-right-20-solid"
+          aria-label="menu"
+          color="gray"
+          variant="ghost"
+          class="md:hidden"
+          @click="$emit('openDrawer')"
+        />
+        <div class="hidden md:block">
+          <UButton v-if="!loggedIn" to="/login"> Login </UButton>
+          <UButton v-else @click="clear"> Logout </UButton>
+        </div>
       </div>
     </UContainer>
   </header>

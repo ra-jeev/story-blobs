@@ -1,4 +1,3 @@
-import NatureImg from '../NatureImg.vue';
 <template>
   <div class="space-y-4">
     <UCard :ui="{ body: { base: 'text-center' } }">
@@ -8,7 +7,14 @@ import NatureImg from '../NatureImg.vue';
       <p class="text-gray-500 dark:text-gray-400">
         Let your creative juices flow. Write an engaging premise.
       </p>
-      <UButton class="mt-4" block @click="navigateTo('/new')">
+      <UButton
+        class="mt-4"
+        block
+        @click="
+          navigateTo('/new');
+          $emit('closeDrawer');
+        "
+      >
         Start a story
       </UButton>
     </UCard>
@@ -24,6 +30,7 @@ import NatureImg from '../NatureImg.vue';
           color="gray"
           target="_blank"
           variant="ghost"
+          @click="$emit('closeDrawer')"
         />
       </div>
       <div>
@@ -32,6 +39,7 @@ import NatureImg from '../NatureImg.vue';
           variant="link"
           :padded="false"
           to="mailto:i.rarsh@gmail.com?subject=[Ref: StoryBlobs]"
+          @click="$emit('closeDrawer')"
         >
           Email me
         </UButton>
@@ -53,4 +61,6 @@ const socials = [
     to: 'https://github.com/ra-jeev',
   },
 ];
+
+defineEmits(['closeDrawer']);
 </script>
