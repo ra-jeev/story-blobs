@@ -1,14 +1,10 @@
 <template>
   <div v-if="stories" class="space-y-4">
-    <template v-for="story in stories">
-      <NuxtLink
-        v-if="story.slug"
-        :key="story.slug"
-        :to="`/stories/${story.slug}`"
-      >
-        <StoryHead v-bind="story" title-hoverable />
-      </NuxtLink>
-    </template>
+    <div v-for="story in stories" :key="story.slug">
+      <ULink v-if="story.slug" :to="`/stories/${story.slug}`">
+        <StoryHeadFeed v-bind="story" title-hoverable />
+      </ULink>
+    </div>
   </div>
 </template>
 
