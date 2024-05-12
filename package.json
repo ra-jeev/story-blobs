@@ -17,6 +17,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@iconify-json/simple-icons": "^1.1.101",
     "@netlify/blobs": "^7.3.0",
     "@paralleldrive/cuid2": "^2.2.2",
     "bcryptjs": "^2.4.3",

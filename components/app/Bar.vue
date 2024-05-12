@@ -9,6 +9,14 @@
       <AppLogo />
       <div class="flex items-center gap-4">
         <ColorMode />
+        <UButton
+          to="https://github.com/ra-jeev/story-blobs"
+          icon="i-simple-icons-github"
+          aria-label="github"
+          color="gray"
+          target="_blank"
+          variant="ghost"
+        />
         <UButton v-if="!loggedIn" to="/login"> Login </UButton>
         <UButton v-else @click="clear"> Logout </UButton>
       </div>
