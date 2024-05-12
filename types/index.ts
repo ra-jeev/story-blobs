@@ -8,7 +8,7 @@ export type User = {
   updatedAt: string;
 };
 
-type Author = {
+export type Author = {
   id: string;
   name: string;
 };

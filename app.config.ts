@@ -8,5 +8,8 @@ export default defineAppConfig({
     button: {
       rounded: 'rounded-full',
     },
+    container: {
+      constrained: 'max-w-5xl',
+    },
   },
 });

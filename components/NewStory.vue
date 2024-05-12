@@ -54,6 +54,7 @@
       </UFormGroup>
       <UButton
         :disabled="loading"
+        :loading="loading"
         trailing-icon="i-heroicons-arrow-right-20-solid"
         size="md"
         type="submit"

@@ -11,9 +11,10 @@ const { user } = useUserSession();
 const { query } = useRoute();
 watch(
   user,
-  () => {
+  async () => {
     if (user.value) {
-      return navigateTo(query.redirect ? (query.redirect as string) : '/', {
+      const redirectPath = query.redirect ? (query.redirect as string) : '/';
+      return navigateTo(redirectPath, {
         replace: true,
       });
     }
