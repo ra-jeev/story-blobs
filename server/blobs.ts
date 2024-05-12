@@ -82,6 +82,7 @@ export const getAllStories = async () => {
   }
 
   const stories = await Promise.all(promises);
+  stories.sort((a, b) => (a.createdAt > b.createdAt ? -1 : 1));
   return stories;
 };
 
