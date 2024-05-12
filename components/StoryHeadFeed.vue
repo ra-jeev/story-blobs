@@ -1,6 +1,6 @@
 <template>
   <UCard>
-    <div class="md:flex md:gap-x-4">
+    <div class="md:flex md:gap-x-4 items-start">
       <img
         v-if="coverImage"
         :src="`${url.origin}/${coverImage}`"
