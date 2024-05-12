@@ -44,7 +44,6 @@
 <script lang="ts" setup>
 import type { FormError, FormSubmitEvent } from '#ui/types';
 
-const route = useRoute();
 const { loggedIn } = useUserSession();
 
 const constraints: { [key: string]: { min: number; max: number } } = {
@@ -91,7 +90,13 @@ const addBlob = async (event: FormSubmitEvent<any>) => {
   loading.value = false;
 };
 
+const route = useRoute();
 const onLoginClick = () => {
-  navigateTo({ path: '/login', query: { redirect: route.fullPath } });
+  const loginPath = {
+    path: '/login',
+    query: { redirect: route.fullPath },
+  };
+
+  navigateTo(loginPath);
 };
 </script>

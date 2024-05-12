@@ -74,10 +74,14 @@ export const getStoryBySlug = async (slug: string) => {
 export const getAllStories = async () => {
   const store = getStore(BlobStores.Stories);
 
-  const allRes = await store.list();
-  const dirRes = await store.list({ directories: true });
+  const { blobs } = await store.list({ directories: true });
+  const promises = [];
+  for (const blob of blobs) {
+    promises.push(store.get(blob.key, { type: 'json' }));
+  }
 
-  return { all: allRes, dirs: dirRes };
+  const stories = await Promise.all(promises);
+  return stories;
 };
 
 export const deleteStoryBySlug = async (slug: string) => {
