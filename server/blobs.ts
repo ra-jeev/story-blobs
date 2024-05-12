@@ -1,10 +1,12 @@
-import { getStore, listStores } from '@netlify/blobs';
-import { Story, User } from '~/types';
+import { getStore } from '@netlify/blobs';
+import { Story, StoryBlob, User } from '~/types';
 
 enum BlobStores {
   User = 'users',
   Stories = 'stories',
 }
+
+const SEPARATOR = process.env.NODE_ENV === 'development' ? '~' : '/';
 
 export const createUser = async (user: User & { password: string }) => {
   const store = getStore(BlobStores.User);
@@ -32,20 +34,41 @@ export const getUserByEmail = async (email: string) => {
 export const createStory = async (story: Story) => {
   const store = getStore(BlobStores.Stories);
 
-  console.log('writing the head:', story.head);
   await store.setJSON(story.head.slug, story.head);
-  console.log('writing the first blob:', story.blobs[0]);
-  const blobKey = `${story.head.slug}/${story.blobs[0].id}`;
-  console.log('blobKey:', blobKey);
+
+  const blobKey = `${story.head.slug}${SEPARATOR}${story.blobs[0].id}`;
+
   await store.setJSON(blobKey, story.blobs[0]);
+};
+
+export const addToStory = async (slug: string, blob: StoryBlob) => {
+  const store = getStore(BlobStores.Stories);
+
+  const blobKey = `${slug}${SEPARATOR}${blob.id}`;
+
+  await store.setJSON(blobKey, blob);
 };
 
 export const getStoryBySlug = async (slug: string) => {
   const store = getStore(BlobStores.Stories);
 
-  console.log('all blobs in store:', await store.list({ directories: true }));
+  let head;
+  const parts = [];
+  const { blobs } = await store.list({ prefix: slug });
 
-  return await store.get(slug, { type: 'json' });
+  for (const blob of blobs) {
+    const part = await store.get(blob.key, { type: 'json' });
+    if (part.slug) {
+      head = part;
+    } else {
+      parts.push(part);
+    }
+  }
+
+  return {
+    head,
+    blobs: parts,
+  };
 };
 
 export const getAllStories = async () => {

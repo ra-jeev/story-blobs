@@ -1,5 +1,4 @@
 import { createStory } from '~/server/blobs';
-import { generateRandomString, slugify } from '../utils';
 
 export default defineEventHandler(async (event) => {
   console.log('incoming create story request');
