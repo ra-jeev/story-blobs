@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
 
   const session = await requireUserSession(event);
 
-  const { title, premise, blob } = await readBody(event);
+  const { title, premise, blob, coverImage } = await readBody(event);
   if (!title || !premise || !blob) {
     throw createError({
       statusCode: 400,
@@ -27,6 +27,7 @@ export default defineEventHandler(async (event) => {
         slug,
         title,
         premise,
+        coverImage,
         author,
         createdAt: date,
       },

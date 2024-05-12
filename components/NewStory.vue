@@ -1,12 +1,13 @@
 <template>
   <UCard>
+    <div class="text-xl md:text-3xl">Your story details</div>
+    <AddCover ref="cover" />
     <UForm
       class="space-y-6"
       :validate="validate"
       :state="state"
       @submit="createStory"
     >
-      <div class="text-lg md:text-xl">Your story details</div>
       <UFormGroup
         label="Title"
         name="title"
@@ -99,16 +100,21 @@ const validate = (formState: any): FormError[] => {
   return errors;
 };
 
+const cover = ref();
 const loading = ref(false);
 const createStory = async (event: FormSubmitEvent<any>) => {
   try {
     loading.value = true;
+
+    const imageFileName = await cover.value.uploadCover();
+
     const res = await $fetch(`/api/stories`, {
       method: 'POST',
       body: {
         title: event.data.title,
         premise: event.data.premise,
         blob: event.data.blob,
+        coverImage: imageFileName ? `images/${imageFileName}` : undefined,
       },
     });
 

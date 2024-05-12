@@ -1,5 +1,3 @@
-import Story from '~/layouts/story.vue';
-
 export type User = {
   id: string;
   email: string;
@@ -24,6 +22,7 @@ export type StoryHead = {
   slug: string;
   title: string;
   premise: string;
+  coverImage?: string;
   author: Author;
   createdAt: string;
 };

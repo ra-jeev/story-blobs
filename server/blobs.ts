@@ -4,6 +4,7 @@ import { Story, StoryBlob, User } from '~/types';
 enum BlobStores {
   User = 'users',
   Stories = 'stories',
+  Images = 'images',
 }
 
 const SEPARATOR = process.env.NODE_ENV === 'development' ? '~' : '/';
@@ -97,4 +98,16 @@ export const deleteAll = async () => {
   for (const item of items.blobs) {
     await store.delete(item.key);
   }
+};
+
+export const saveImage = async (key: string, file: File) => {
+  const store = getStore(BlobStores.Images);
+
+  return await store.set(key, file);
+};
+
+export const getImage = (key: string) => {
+  const store = getStore(BlobStores.Images);
+
+  return store.get(key, { type: 'blob' });
 };
