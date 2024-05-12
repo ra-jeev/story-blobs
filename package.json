@@ -19,6 +19,7 @@
   "dependencies": {
     "@iconify-json/simple-icons": "^1.1.101",
     "@netlify/blobs": "^7.3.0",
+    "@nuxt/fonts": "^0.7.0",
     "@paralleldrive/cuid2": "^2.2.2",
     "bcryptjs": "^2.4.3",
     "nuxt-auth-utils": "^0.0.24"
