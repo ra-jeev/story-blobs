@@ -1,10 +1,10 @@
 <template>
   <div>
     <AppBar />
-    <UContainer class="flex justify-center py-4">
-      <main class="w-full max-w-lg">
+    <main>
+      <UContainer class="flex justify-center py-4">
         <slot />
-      </main>
-    </UContainer>
+      </UContainer>
+    </main>
   </div>
 </template>

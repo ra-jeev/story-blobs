@@ -1,10 +1,8 @@
 <template>
-  <NewStory />
+  <NewStory class="w-full max-w-xl" />
 </template>
 
 <script lang="ts" setup>
-import NewStory from '~/components/NewStory.vue';
-
 definePageMeta({
   layout: 'story',
   middleware: 'auth',

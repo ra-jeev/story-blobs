@@ -9,7 +9,7 @@ export default defineAppConfig({
       rounded: 'rounded-full',
     },
     container: {
-      constrained: 'max-w-5xl',
+      constrained: 'max-w-6xl',
     },
   },
 });
