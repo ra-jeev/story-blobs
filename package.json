@@ -13,7 +13,8 @@
     "@nuxt/devtools": "latest",
     "@nuxt/ui": "^2.13.0",
     "@types/bcryptjs": "^2.4.6",
-    "nuxt": "^3.10.1"
+    "nuxt": "^3.10.1",
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "@netlify/blobs": "^7.3.0",
