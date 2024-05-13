@@ -1,7 +1,7 @@
 <template>
   <UCard>
     <h1
-      class="text-3xl md:text-5xl font-semibold text-primary"
+      class="text-3xl md:text-5xl font-semibold text-primary break-words"
       :class="{
         'hover:text-primary-600 dark:hover:text-primary-500': titleHoverable,
       }"
@@ -20,9 +20,7 @@
       class="w-full my-6"
     />
 
-    <p
-      class="text-wrap break-all text-gray-600 dark:text-gray-300 text-sm mt-2"
-    >
+    <p class="break-words text-gray-600 dark:text-gray-300 text-sm mt-2">
       {{ premise }}
     </p>
     <Author class="mt-4" v-bind="author" :created-at="createdAt" />

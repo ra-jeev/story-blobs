@@ -13,7 +13,7 @@
       />
       <div>
         <h1
-          class="text-wrap break-all text-2xl md:text-3xl font-semibold text-primary"
+          class="text-2xl md:text-3xl font-semibold text-primary break-words"
           :class="{
             'hover:text-primary-600 dark:hover:text-primary-500':
               titleHoverable,
@@ -22,9 +22,7 @@
           {{ title }}
         </h1>
 
-        <p
-          class="text-wrap break-all text-gray-600 dark:text-gray-300 text-base mt-2"
-        >
+        <p class="break-words text-gray-600 dark:text-gray-300 text-base mt-2">
           {{ premise }}
         </p>
         <Author class="mt-4" v-bind="author" :created-at="createdAt" />
