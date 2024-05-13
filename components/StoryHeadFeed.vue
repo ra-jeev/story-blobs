@@ -11,7 +11,7 @@
         placeholder
         class="w-full md:max-w-48 mb-4 md:mb-0"
       />
-      <div>
+      <div class="overflow-hidden">
         <h1
           class="text-2xl md:text-3xl font-semibold text-primary break-words"
           :class="{
