@@ -1,14 +1,19 @@
 <template>
   <UCard>
     <div class="md:flex md:gap-x-4 items-start">
-      <img
+      <NuxtImg
         v-if="coverImage"
-        :src="`${url.origin}/${coverImage}`"
+        provider="netlify"
+        :src="`/${coverImage}`"
+        width="320"
+        fit="cover"
+        format="webp"
+        placeholder
         class="w-full md:max-w-48 mb-4 md:mb-0"
       />
       <div>
         <h1
-          class="text-2xl md:text-3xl font-semibold text-primary"
+          class="text-wrap break-all text-2xl md:text-3xl font-semibold text-primary"
           :class="{
             'hover:text-primary-600 dark:hover:text-primary-500':
               titleHoverable,
@@ -17,7 +22,9 @@
           {{ title }}
         </h1>
 
-        <p class="text-gray-600 dark:text-gray-300 text-base mt-2">
+        <p
+          class="text-wrap break-all text-gray-600 dark:text-gray-300 text-base mt-2"
+        >
           {{ premise }}
         </p>
         <Author class="mt-4" v-bind="author" :created-at="createdAt" />

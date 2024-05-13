@@ -1,6 +1,6 @@
 <template>
   <UCard>
-    <p>
+    <p class="text-wrap break-all">
       {{ blob }}
     </p>
 

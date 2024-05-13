@@ -2,8 +2,8 @@
   <div>
     <AppBar @open-drawer="isOpen = true" />
     <UContainer class="flex justify-center gap-x-4 sm:gap-x-6 py-4 sm:py-6">
-      <AppSideBar class="w-72 hidden md:block" />
-      <main class="flex-1">
+      <AppSideBar class="shrink-0 w-72 hidden md:block" />
+      <main class="grow">
         <slot />
       </main>
     </UContainer>

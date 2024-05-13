@@ -9,13 +9,20 @@
       {{ title }}
     </h1>
 
-    <img
+    <NuxtImg
       v-if="coverImage"
-      :src="`${url.origin}/${coverImage}`"
-      class="my-6 w-full"
+      provider="netlify"
+      :src="`/${coverImage}`"
+      width="640"
+      fit="cover"
+      format="webp"
+      placeholder
+      class="w-full my-6"
     />
 
-    <p class="text-gray-600 dark:text-gray-300 text-sm mt-2">
+    <p
+      class="text-wrap break-all text-gray-600 dark:text-gray-300 text-sm mt-2"
+    >
       {{ premise }}
     </p>
     <Author class="mt-4" v-bind="author" :created-at="createdAt" />
